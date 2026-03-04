@@ -107,11 +107,18 @@
         --border-radius-sm: 8px;
       }
 
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: var(--header-height);
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
       }
 
+      * {
+        box-sizing: border-box;
+      }
+      html,
       body {
         font-family: var(--font-main);
         background-color: var(--color-bg);
@@ -282,22 +289,28 @@
 
       /* ===== ШАПКА ===== */
       .header {
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 1000;
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
+        background: rgba(255, 255, 255, 0.95);
         border-bottom: 1px solid var(--glass-border);
         height: var(--header-height);
         display: flex;
         align-items: center;
+        width: 100%;
       }
 
       .header__container {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 100%;
       }
 
       .logo {
@@ -307,17 +320,13 @@
         text-decoration: none;
         color: var(--color-text);
         font-weight: 700;
-      }
-
-      .logo__icon {
-        font-family: var(--font-mono);
-        font-size: 28px;
-        color: var(--color-primary);
+        flex-shrink: 0;
       }
 
       .logo__text {
         font-size: 20px;
         letter-spacing: -0.5px;
+        white-space: nowrap;
       }
 
       .logo__badge {
@@ -328,12 +337,23 @@
         font-size: 12px;
         font-weight: 600;
         text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .nav__list {
         display: flex;
         gap: 32px;
         list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
       }
 
       .nav__link {
@@ -342,12 +362,16 @@
         font-weight: 500;
         transition: color 0.3s;
         position: relative;
+        font-size: 16px;
+        white-space: nowrap;
+        display: inline-block;
+        padding: 8px 0;
       }
 
       .nav__link::after {
         content: "";
         position: absolute;
-        bottom: -4px;
+        bottom: 0;
         left: 0;
         width: 0;
         height: 2px;
@@ -372,48 +396,130 @@
         padding: 8px 16px;
         border-radius: var(--border-radius-sm);
         transition: all 0.3s;
+        white-space: nowrap;
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .header-phone:hover {
-        background: var(--color-primary);
-        color: white;
-      }
-
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-      }
-
-      .menu-toggle span {
-        width: 24px;
-        height: 2px;
-        background: var(--color-text);
-        transition: 0.3s;
-      }
-
+      /* Адаптивность */
       @media (max-width: 1024px) {
-        .nav {
-          display: none;
+        .nav__list {
+          gap: 20px;
         }
 
-        .menu-toggle {
-          display: flex;
+        .nav__link {
+          font-size: 14px;
+        }
+
+        .header-phone {
+          font-size: 16px;
+          padding: 6px 12px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          height: auto;
+          min-height: 70px;
+          padding: 8px 0;
+        }
+
+        .header__container {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .nav {
+          order: 3;
+          width: 100%;
+        }
+
+        .nav__list {
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .nav__link {
+          font-size: 14px;
+          padding: 5px 0;
+        }
+
+        .logo__text {
+          font-size: 18px;
+        }
+
+        .logo__badge {
+          font-size: 10px;
+          padding: 2px 6px;
+        }
+
+        .header-phone {
+          font-size: 14px;
+          padding: 4px 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header {
+          padding: 5px 0;
+          min-height: 60px;
+        }
+
+        .header__container {
+          gap: 5px;
+        }
+
+        .nav__list {
+          gap: 10px;
+        }
+
+        .nav__link {
+          font-size: 12px;
         }
 
         .header-phone {
           display: none;
         }
+
+        .logo__text {
+          font-size: 16px;
+        }
+
+        .logo__badge {
+          font-size: 9px;
+          padding: 2px 4px;
+        }
       }
 
+      @media (max-width: 360px) {
+        .nav__list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .nav__link {
+          font-size: 11px;
+          padding: 6px 4px;
+          text-align: center;
+        }
+      }
+
+      /* Фикс для Safari и мобильных браузеров */
+      @supports (-webkit-touch-callout: none) {
+        .header {
+        }
+      }
       /* ===== ГЕРОЙ ===== */
       .hero {
         position: relative;
         padding: 80px 0;
+        margin-top: var(--header-height);
         min-height: calc(100vh - var(--header-height));
         display: flex;
         align-items: center;
@@ -1428,7 +1534,16 @@
           padding: 20px;
         }
       }
+      /* Останавливаем анимацию фона при скролле */
+      .hero__pattern {
+        animation-play-state: running;
+      }
 
+      @media (prefers-reduced-motion: reduce) {
+        .hero__pattern {
+          animation: none;
+        }
+      }
       /* ===== ПЕЧАТЬ ===== */
       @media print {
         .floating-phone,
@@ -1436,79 +1551,6 @@
         .footer,
         .review-form {
           display: none;
-        }
-      }
-      /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
-      @media (max-width: 1024px) {
-        .nav {
-          position: fixed;
-          top: var(--header-height);
-          left: 0;
-          width: 100%;
-          background: var(--glass-bg);
-          backdrop-filter: var(--glass-blur);
-          -webkit-backdrop-filter: var(--glass-blur);
-          border-bottom: 1px solid var(--glass-border);
-          padding: 20px;
-          transform: translateY(-150%);
-          opacity: 0;
-          transition:
-            transform 0.3s ease,
-            opacity 0.3s ease;
-          z-index: 999;
-          box-shadow: var(--shadow-md);
-        }
-
-        .nav.active {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        .nav__list {
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-        }
-
-        .nav__link {
-          font-size: 18px;
-          display: block;
-          padding: 10px 0;
-        }
-
-        .menu-toggle {
-          display: flex !important;
-          flex-direction: column;
-          gap: 6px;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 8px;
-          z-index: 1001;
-        }
-
-        .menu-toggle span {
-          width: 24px;
-          height: 2px;
-          background: var(--color-primary);
-          transition: 0.3s;
-          display: block;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-          transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-          transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        body.menu-open {
-          overflow: hidden;
         }
       }
     </style>
@@ -1557,9 +1599,6 @@
 
         <div class="header__actions">
           <a href="tel:+79028936615" class="header-phone">8 (902) 893-66-15</a>
-          <button class="menu-toggle" aria-label="Открыть меню">
-            <span></span><span></span><span></span>
-          </button>
         </div>
       </div>
     </header>
@@ -2590,59 +2629,6 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // ===== МОБИЛЬНОЕ МЕНЮ =====
-        const menuToggle = document.querySelector(".menu-toggle");
-        const nav = document.querySelector(".nav");
-        const body = document.body;
-
-        if (menuToggle && nav) {
-          menuToggle.addEventListener("click", function () {
-            this.classList.toggle("active");
-            nav.classList.toggle("active");
-            body.classList.toggle("menu-open");
-
-            // Меняем aria-label для доступности
-            const isOpen = nav.classList.contains("active");
-            this.setAttribute(
-              "aria-label",
-              isOpen ? "Закрыть меню" : "Открыть меню",
-            );
-          });
-
-          // Закрываем меню при клике на ссылку
-          const navLinks = document.querySelectorAll(".nav__link");
-          navLinks.forEach((link) => {
-            link.addEventListener("click", function () {
-              menuToggle.classList.remove("active");
-              nav.classList.remove("active");
-              body.classList.remove("menu-open");
-              menuToggle.setAttribute("aria-label", "Открыть меню");
-            });
-          });
-
-          // Закрываем меню при клике вне области
-          document.addEventListener("click", function (e) {
-            if (
-              !nav.contains(e.target) &&
-              !menuToggle.contains(e.target) &&
-              nav.classList.contains("active")
-            ) {
-              menuToggle.classList.remove("active");
-              nav.classList.remove("active");
-              body.classList.remove("menu-open");
-              menuToggle.setAttribute("aria-label", "Открыть меню");
-            }
-          });
-
-          // Закрываем меню при изменении размера окна (если стали десктопом)
-          window.addEventListener("resize", function () {
-            if (window.innerWidth > 1024) {
-              menuToggle.classList.remove("active");
-              nav.classList.remove("active");
-              body.classList.remove("menu-open");
-              menuToggle.setAttribute("aria-label", "Открыть меню");
-            }
-          });
-        }
 
         // ===== ФОРМА ОТЗЫВА =====
         const reviewForm = document.getElementById("fakeReviewForm");
