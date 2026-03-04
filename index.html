@@ -1438,6 +1438,79 @@
           display: none;
         }
       }
+      /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+      @media (max-width: 1024px) {
+        .nav {
+          position: fixed;
+          top: var(--header-height);
+          left: 0;
+          width: 100%;
+          background: var(--glass-bg);
+          backdrop-filter: var(--glass-blur);
+          -webkit-backdrop-filter: var(--glass-blur);
+          border-bottom: 1px solid var(--glass-border);
+          padding: 20px;
+          transform: translateY(-150%);
+          opacity: 0;
+          transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
+          z-index: 999;
+          box-shadow: var(--shadow-md);
+        }
+
+        .nav.active {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .nav__list {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .nav__link {
+          font-size: 18px;
+          display: block;
+          padding: 10px 0;
+        }
+
+        .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          gap: 6px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          z-index: 1001;
+        }
+
+        .menu-toggle span {
+          width: 24px;
+          height: 2px;
+          background: var(--color-primary);
+          transition: 0.3s;
+          display: block;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1461,7 +1534,7 @@
     <header class="header">
       <div class="container header__container">
         <a href="/" class="logo">
-          <span class="logo__text">Юрий Иванов</span>
+          <span class="logo__text">Юрий Зеленкин</span>
           <span class="logo__badge">частный мастер</span>
         </a>
 
@@ -1585,8 +1658,8 @@
         <div class="container">
           <div class="about__grid">
             <div class="about__content">
-              <span class="section-tag">/ Мастер</span>
-              <h2 class="section-title">Юрий Иванов</h2>
+              <span class="section-tag">/ Частный мастер</span>
+              <h2 class="section-title">Юрий Зеленкин</h2>
               <div class="about__stats">
                 <div class="about__stat">
                   <span class="about__stat-number">5+</span>
@@ -1597,7 +1670,7 @@
                   <span class="about__stat-label">отремонтировано</span>
                 </div>
                 <div class="about__stat">
-                  <span class="about__stat-number">2</span>
+                  <span class="about__stat-number"> 2</span>
                   <span class="about__stat-label">года гарантии</span>
                 </div>
               </div>
@@ -1749,10 +1822,7 @@
                 stroke-linecap="round"
               />
             </svg>
-            <span
-              >Цена запчастей оплачивается отдельно (по чеку магазина) или я
-              могу привезти свои под заказ</span
-            >
+            <span>Цена ремонта уточняется сразу после диагностики</span>
           </div>
         </div>
       </section>
@@ -1886,7 +1956,18 @@
                 всего 500 рублей! Очень довольна, теперь только к нему.
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/фильтр.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -1933,7 +2014,18 @@
                 большое!
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/тэн.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -1979,7 +2071,18 @@
                 буду советовать знакомым!
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/щетки.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -2026,7 +2129,18 @@
                 недорого. Очень довольна, спасибо!
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/арситон.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -2071,7 +2185,18 @@
                 местных сервисах. Качественно, быстро, аккуратно. Спасибо!
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/лджи.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -2114,7 +2239,18 @@
                 взял. Очень порядочный человек! Теперь всем соседям советую.
               </p>
               <div class="review-card__photo">
-                <div class="review-card__photo-placeholder">[Фото ремонта]</div>
+                <div class="review-card__photo-placeholder">
+                  <img
+                    src="share/прготечка.png"
+                    alt="Фото ремонта фильтра"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background-color: #f0f2f5;
+                    "
+                  />
+                </div>
               </div>
             </div>
 
@@ -2265,8 +2401,8 @@
               <div class="process-step__number">01</div>
               <h3 class="process-step__title">Звонок</h3>
               <p class="process-step__desc">
-                Вы звоните или пишете в WhatsApp, описываете проблему.
-                Договариваемся о времени.
+                Вы звоните или пишете в Max, описываете проблему. Договариваемся
+                о времени.
               </p>
             </div>
 
@@ -2319,7 +2455,7 @@
                   </svg>
                 </div>
                 <div class="contacts__content">
-                  <h3>Телефон / WhatsApp</h3>
+                  <h3>Телефон / Max</h3>
                   <a href="tel:+79028936615">8 (902) 893-66-15</a>
                 </div>
               </div>
@@ -2364,7 +2500,17 @@
             </div>
 
             <div class="contacts__map">
-              <div class="map-placeholder">[Карта Челябинска]</div>
+              <div class="map-placeholder">
+                <img
+                  src="share/стиралка.png"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    background-color: #f0f2f5;
+                  "
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -2434,8 +2580,8 @@
 
         <div class="footer__bottom">
           <p>
-            © 2026 Юрий Иванов. Ремонт стиральных машин в Челябинске. Все права
-            защищены.
+            © 2024-2026 Юрий Зеленкин. Ремонт стиральных машин в Челябинске. Все
+            права защищены. Цена на сайте имеют ознакомительный характер.
           </p>
         </div>
       </div>
@@ -2443,6 +2589,61 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // ===== МОБИЛЬНОЕ МЕНЮ =====
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".nav");
+        const body = document.body;
+
+        if (menuToggle && nav) {
+          menuToggle.addEventListener("click", function () {
+            this.classList.toggle("active");
+            nav.classList.toggle("active");
+            body.classList.toggle("menu-open");
+
+            // Меняем aria-label для доступности
+            const isOpen = nav.classList.contains("active");
+            this.setAttribute(
+              "aria-label",
+              isOpen ? "Закрыть меню" : "Открыть меню",
+            );
+          });
+
+          // Закрываем меню при клике на ссылку
+          const navLinks = document.querySelectorAll(".nav__link");
+          navLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              menuToggle.classList.remove("active");
+              nav.classList.remove("active");
+              body.classList.remove("menu-open");
+              menuToggle.setAttribute("aria-label", "Открыть меню");
+            });
+          });
+
+          // Закрываем меню при клике вне области
+          document.addEventListener("click", function (e) {
+            if (
+              !nav.contains(e.target) &&
+              !menuToggle.contains(e.target) &&
+              nav.classList.contains("active")
+            ) {
+              menuToggle.classList.remove("active");
+              nav.classList.remove("active");
+              body.classList.remove("menu-open");
+              menuToggle.setAttribute("aria-label", "Открыть меню");
+            }
+          });
+
+          // Закрываем меню при изменении размера окна (если стали десктопом)
+          window.addEventListener("resize", function () {
+            if (window.innerWidth > 1024) {
+              menuToggle.classList.remove("active");
+              nav.classList.remove("active");
+              body.classList.remove("menu-open");
+              menuToggle.setAttribute("aria-label", "Открыть меню");
+            }
+          });
+        }
+
         // ===== ФОРМА ОТЗЫВА =====
         const reviewForm = document.getElementById("fakeReviewForm");
 
@@ -2539,15 +2740,6 @@
               notification.remove();
             }, 300);
           }, 4000);
-        }
-
-        // ===== МОБИЛЬНОЕ МЕНЮ =====
-        const menuToggle = document.querySelector(".menu-toggle");
-
-        if (menuToggle) {
-          menuToggle.addEventListener("click", function () {
-            alert("Мобильное меню появится в следующей версии");
-          });
         }
       });
     </script>
