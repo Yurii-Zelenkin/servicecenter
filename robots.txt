@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Указываем путь к карте сайта
-Sitemap: https://xn--74-6kchx.xn--p1ai/sitemap.xml
+Sitemap: https://xn--74-6kctpngfjjeqfmob.xn--p1ai/sitemap.xml
 
 # Запрещаем служебные папки (если есть)
 Disallow: /admin/
