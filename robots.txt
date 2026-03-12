@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /tmp/
 Sitemap: https://xn--74-6kctpngfjjeqfmob.xn--p1ai/sitemap.xml
