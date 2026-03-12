@@ -3,37 +3,8 @@
   <!-- Главная страница -->
   <url>
     <loc>https://xn--74-6kctpngfjjeqfmob.xn--p1ai/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  
-  <!-- Разделы (якоря) - для SEO тоже важны -->
-  <url>
-    <loc>https://xn--74-6kctpngfjjeqfmob.xn--p1ai/#about</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://xn--74-6kctpngfjjeqfmob.xn--p1ai/#prices</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://xn--74-6kctpngfjjeqfmob.xn--p1ai/#reviews</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://xn--74-6kctpngfjjeqfmob.xn--p1ai/#contacts</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
